@@ -18,58 +18,16 @@ A powerful research paper analysis tool that helps researchers analyze academic 
 - Google Gemini API key
 - Internet connection for API access
 
-## Environment Setup
+## Quick Start
 
-### Development Environment
-
-1. Create a `.env` file in the project root with your API key:
-```
-GEMINI_API_KEY=your_actual_api_key_here
-```
-
-### Production Environment
-
-#### Option 1: Using Docker Secrets (Recommended for Production)
-
-1. Create a Docker secret:
-```bash
-echo "your_api_key" | docker secret create gemini_api_key -
-```
-
-2. Run the container with the secret:
-```bash
-docker run -p 8504:8501 --secret gemini_api_key research-assistant:latest
-```
-
-#### Option 2: Using Environment Variables
-
-1. Set the environment variable directly:
-```bash
-docker run -p 8504:8501 -e GEMINI_API_KEY=your_api_key research-assistant:latest
-```
-
-#### Option 3: Using .env File (Development Only)
-
-1. Create `.env` file with your API key:
-```
-GEMINI_API_KEY=your_api_key_here
-```
-
-2. Run with the .env file:
-```bash
-docker run -p 8504:8501 --env-file .env research-assistant:latest
-```
-
-## Running with Docker
-
-### Building the Docker Image
+### 1. Build the Docker Image
 
 ```bash
 # Build the Docker image
 docker build -t research-assistant .
 ```
 
-### Running the Container
+### 2. Run the Container
 
 #### Basic Run (Development)
 ```bash
@@ -89,6 +47,43 @@ docker run -d -p 8504:8501 --env-file .env research-assistant
 #### Run with Auto-restart
 ```bash
 docker run -d --restart unless-stopped -p 8504:8501 --env-file .env research-assistant
+```
+
+### 3. Access the Application
+- Open your web browser and go to: http://localhost:8504
+
+## Detailed Setup and Configuration
+
+### Environment Variables Setup
+
+#### Option 1: Using .env File (Recommended for Development)
+
+1. Create a `.env` file in the project root with your API key:
+```
+GEMINI_API_KEY=your_actual_api_key_here
+```
+
+2. Run with the .env file:
+```bash
+docker run -p 8504:8501 --env-file .env research-assistant:latest
+```
+
+#### Option 2: Using Environment Variables
+
+```bash
+docker run -p 8504:8501 -e GEMINI_API_KEY=your_api_key research-assistant:latest
+```
+
+#### Option 3: Using Docker Secrets (Recommended for Production)
+
+1. Create a Docker secret:
+```bash
+echo "your_api_key" | docker secret create gemini_api_key -
+```
+
+2. Run the container with the secret:
+```bash
+docker run -p 8504:8501 --secret gemini_api_key research-assistant:latest
 ```
 
 ### Port Configuration
