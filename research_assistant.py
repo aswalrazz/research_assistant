@@ -274,7 +274,7 @@ def main():
         f"""
         <div style="text-align: center; color: #C57307; margin-bottom: 10px;">
             ---
-            <p> Powered by DataSparkLabs </p>
+            <p> Powered by Viz_AI </p>
         </div>
         """,
         unsafe_allow_html=True
